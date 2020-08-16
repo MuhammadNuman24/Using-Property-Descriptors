@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<script>
+
+    'use strict';
+//Code here
+
+const person ={
+  firstName:'Bob',
+  lastName:'Smith' ,
+
+};
+
+const firstNameDescriptor= Object.getOwnPropertyDescriptor(person,'firstName');
+console.dir(firstNameDescriptor);
+
+Object.defineProperty(person,'age',{
+    configurable:true,
+    enumerable:true,
+    writable:true,
+    value:23,
+});
+
+Object.defineProperty(person,'age',{
+    configurable:true,
+    enumerable:true,
+    get:function(){
+        console.log('getter');
+     return this._age;
+    },
+set:function (value){
+    console.log('setter');
+    this._age=value;
+}
+
+});
+
+person.age=23;
+console.log(person.age);
+
+
+console.log (person);
+
+</script>
